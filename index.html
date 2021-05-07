@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,100;1,400&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <script defer src="./js/script.js"></script>
+  <title>Customer Data</title>
+</head>
+
+<body>
+  <header>
+    <h1>Cadastro de Clientes</h1>
+  </header>
+  <main id="container">
+
+    <div class="modal-overlay">
+      <!-- modal start -->
+      <div class="modal">
+        <div id="form">
+          <h2>Novo Cliente</h2>
+          <form action="POST" onsubmit="Form.submit(event)">
+            <div class="input-group">
+              <label class="sr-only" for="name">Nome</label>
+              <input type="text" id="name" name="name" placeholder="Nome Completo" />
+            </div>
+            <div class="input-group">
+              <label class="sr-only" for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="ex: seunome@exemplo.com" />
+            </div>
+            <div class="input-two">
+              <div class="input-group">
+                <label class="sr-only" for="cpforcnpj">CPF ou CNPJ</label>
+                <input type="number" id="cpforcnpj" name="cpforcnpj" placeholder="CPF ou CNPJ" />
+              </div>
+              <div class="input-group">
+                <label class="sr-only" for="tel">Telefone</label>
+                <input type="number" id="tel" name="tel" placeholder="Telefone/Celular" />
+              </div>
+            </div>
+            <div class="input-address">
+              <div class="input-two">
+                <div class="input-group">
+                  <label class="sr-only" for="address">Logradouro</label>
+                  <input type="text" id="address" name="address" placeholder="Logradouro" />
+                </div>
+                <div class="input-group">
+                  <label class="sr-only" for="number">Número</label>
+                  <input type="number" id="number" name="number" placeholder="Número" />
+                </div>
+              </div>
+              <div class="input-group">
+                <label class="sr-only" for="cep">CEP</label>
+                <input type="number" id="cep" name="cep" placeholder="CEP" />
+              </div>
+              <div class="input-group">
+                <label class="sr-only" for="district">Bairro</label>
+                <input type="text" id="district" name="district" placeholder="Bairro" />
+              </div>
+              <div class="input-group">
+                <label class="sr-only" for="city">Cidade</label>
+                <input type="text" id="city" name="city" placeholder="Cidade" />
+              </div>
+              <div class="input-group">
+                <label class="sr-only" for="uf">UF</label>
+                <input type="text" id="uf" name="uf" placeholder="UF" />
+              </div>
+            </div>
+            <div class="input-group actions">
+              <a onclick="Modal.close()" href="#" class="button cancel">Cancelar</a>
+              <button type="button">Salvar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div> <!-- modal end -->
+
+    <!-- search start -->
+    <section>
+      <form action="" id="search-bar">
+        <label for="search" class="sr-only">Pesquisar Cliente pelo CPF ou CNPJ</label>
+        <input type="text" name="search" placeholder="Pesquisar Cliente pelo CPF ou CNPJ">
+        <button><i class="fa fa-search"></i></button>
+      </form>
+    </section><!-- search end -->
+
+    <!-- main start -->
+    <section>
+      <div id="client-container">
+        <div class="client-header">
+          <h2>Clientes</h2>
+          <div class="actions-header">
+            <button onclick="Modal.open()"><i class="fa fa-plus"></i></button>
+            <button><i class="fa fa-list"></i></button>
+          </div>
+        </div>
+        <div class="client-main">
+          <section id="clients">
+            <table id="data-table">
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Telefone</th>
+                  <th>CPF/CNPJ</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Matheus Leal Toledo Faria</td>
+                  <td>9999999</td>
+                  <td>*999999</td>
+                  <td>
+                    <button id="trash"><i class="fa fa-trash"></i></button>
+                    <button id="eye"><i class="fa fa-eye"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        </div>
+      </div>
+    </section><!-- Main end -->
+  </main>
+</body>
+
+</html>
