@@ -262,6 +262,7 @@ table td:last-child button:first-child {
   padding: 2.4rem;
   width: 92%;
   max-width: 800px;
+  border-radius: 0.4rem;
 }
 
 .input-group {
@@ -298,6 +299,55 @@ table td:last-child button:first-child {
 
 .input-group.actions .button,
 .input-group.actions button {
+  border-radius: 0.4rem;
   margin-top: 1rem;
   width: 48%;
+}
+
+.modal-overlay-client {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.modal-overlay-client.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-container {
+  background: #f0f2f5;
+  padding: 2.4rem;
+  width: 92%;
+  max-width: 600px;
+  border-radius: 0.4rem;
+}
+
+.input-group #close {
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-group #close button {
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+}
+
+.input-group #close i {
+  color: var(--red);
+}
+
+.modal-container .input-group input {
+  cursor: not-allowed;
+  background-color: #fff;
 }
