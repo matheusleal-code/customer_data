@@ -172,56 +172,38 @@ header:hover {
   margin: 1rem auto auto auto;
 }
 
-#data-table {
+.box {
   width: 100%;
-  border-spacing: 0 0.5rem;
 }
 
-table th {
-  background: #fff;
-  font-weight: normal;
-  padding: 0.9rem 1.6rem;
-  text-align: center;
-  color: #1e2233;
+.row {
 }
 
-table tbody tr {
-  opacity: 0.7;
-  transition: 1s;
-  transform: scale(0.8);
-}
-
-table tbody tr:hover {
-  opacity: 1;
-  transform: scale(1);
-}
-
-table td {
-  background: #fff;
-  padding: 0.5rem 0.6rem;
-  text-align: center;
-}
-
-table td:last-child {
+.row-main {
+  padding: 1rem;
   display: flex;
+  justify-content: space-around;
+  border: 1px solid #d2d2d2;
+  border-radius: 0.2rem;
 }
 
-table td:last-child button {
-  border-radius: 0.5rem;
-  height: 30px;
-  width: 30px;
+.row-main p {
+  width: 100%;
+  margin-right: 0.8rem;
+  display: flex;
+  flex-direction: row;
 }
 
-table td:last-child button i {
+.row-main button {
   color: white;
-}
-
-table td:last-child button:first-child {
-  margin-right: 0.4rem;
+  width: 10%;
+  height: 20px;
+  border-radius: 0.2rem;
 }
 
 #trash {
   background-color: red;
+  margin-right: 0.2rem;
 }
 
 #trash:hover {
@@ -230,10 +212,44 @@ table td:last-child button:first-child {
 
 #eye {
   background-color: var(--blue-light);
+  color: white;
+  width: 10%;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.2rem;
+  cursor: pointer;
 }
 
 #eye:hover {
   background-color: var(--blue);
+}
+
+#row-second {
+  border-top: red 1px solid;
+  border-radius: 0;
+  display: none;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input:checked ~ #row-second {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid var(--blue);
+  border-radius: 0.2rem;
+  flex-direction: column;
+}
+
+#row-second .row {
+  border-top: 1px solid #d2d2d2;
+  margin-bottom: 0.4rem;
+  display: flex;
+  justify-content: space-between;
 }
 
 /* ==== Modal ==== */
@@ -302,26 +318,6 @@ table td:last-child button:first-child {
   border-radius: 0.4rem;
   margin-top: 1rem;
   width: 48%;
-}
-
-.modal-overlay-client {
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  visibility: hidden;
-}
-
-.modal-overlay-client.active {
-  opacity: 1;
-  visibility: visible;
 }
 
 .modal-container {

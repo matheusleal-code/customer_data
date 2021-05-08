@@ -38,8 +38,7 @@ const List = {
     List.isShow = !List.isShow
     if (List.isShow) {
       App.reload()
-      dom.addTableHeader()
-      Client.all.forEach(dom.addClient)
+      Client.all.forEach(dom.addNewClient)
     } else {
       App.reload()
     }
@@ -47,32 +46,7 @@ const List = {
 }
 
 const Client = {
-  all: [
-    {
-      name: "Matheus",
-      email: "matheus@gmail.com",
-      cpforcnpj: "12345",
-      tel: 99999999,
-      address: "rua 01",
-      number: 500,
-      cep: 1111111,
-      district: "Mendes",
-      city: "Guaruja",
-      uf: "SP"
-    },
-    {
-      name: "Julia",
-      email: "julia@gmail.com",
-      cpforcnpj: "123456",
-      tel: 99999999,
-      address: "rua 02",
-      number: 600,
-      cep: 12212,
-      district: "Caraca",
-      city: "SJC",
-      uf: "SP"
-    }
-  ],
+  all: [],
   add(client) {
     Client.all.push(client)
     List.show()
@@ -92,8 +66,7 @@ const Client = {
         if (List.isShow == true) {
           List.show()
         }
-        dom.addTableHeader()
-        dom.addClient(Client.all[i], i)
+        dom.addNewClient(Client.all[i], i)
         break
       }
     }
@@ -127,48 +100,46 @@ const Search = {
 }
 
 const dom = {
-  clientHeader: document.querySelector('#data-table thead'),
-  clientContainer: document.querySelector('#data-table tbody'),
+  clientNewContainer: document.querySelector('.box'),
 
-  addTableHeader() {
-    const tr = document.createElement('tr')
-    tr.innerHTML = dom.innerHTMLTableClient()
-    dom.clientHeader.appendChild(tr)
+  addNewClient(client, index) {
+    const div = document.createElement('div')
+    div.innerHTML = dom.innerHTMLNewClient(client, index)
+    dom.clientNewContainer.appendChild(div)
   },
 
-  addClient(client, index) {
-    const tr = document.createElement('tr')
-    tr.innerHTML = dom.innerHTMLClient(client, index)
-    tr.dataset.index = index
-    dom.clientContainer.appendChild(tr)
-  },
-
-  innerHTMLTableClient() {
-    const html = `           
-      <th>Nome</th>
-      <th>CPF/CNPJ</th>
-      <th>Telefone</th>
-      <th></th>`
-
-    return html
-  },
-
-  innerHTMLClient(client, index) {
+  innerHTMLNewClient(client, index) {
     const html = `
-      <td>${client.name}</td>
-      <td>${client.cpforcnpj}</td>
-      <td>${client.tel}</td>
-      <td>
+      <div class="row">
+        <div class="row-main">
+          <p>Nome: ${client.name}</p>
+          <p>Telefone: ${client.tel}</p>
+          <p>CPF/CNPJ: ${client.cpforcnpj}</p>
           <button id="trash" onClick="Client.remove(${index})"><i class="fa fa-trash"></i></button>
-          <button id="eye"><i class="fa fa-eye"></i></button>
-      </td>
+          <label class="item" id="eye" for=${client.cpforcnpj}><i class="fa fa-eye"></i></label>
+        </div>
+      </div>
+      <input type="checkbox" id=${client.cpforcnpj}>
+      <div id="row-second">
+        <div class="row">
+          <p>Endereço: ${client.address}</p>
+          <p>Número: ${client.number}</p>
+        </div>
+        <div class="row">
+          <p>CEP: ${client.cep}</p>
+          <p>Bairro: ${client.district}</p>
+          <p>Cidade: ${client.city}</p>
+        </div>
+        <div class="row">
+          <p>Email: ${client.email}</p>
+        </div>
+      </div>
     `
     return html
   },
 
   clearTable() {
-    dom.clientContainer.innerHTML = ""
-    dom.clientHeader.innerHTML = ""
+    dom.clientNewContainer.innerHTML = ""
   },
 }
 
