@@ -59,7 +59,7 @@ const Client = {
     {
       name: "Amostra 1",
       email: "amostra1@amostra1.com",
-      cpforcnpj: "99999999999",
+      cpforcnpj: "00000000000",
       tel: 9999999999,
       address: "Amostra end 1",
       number: 500,
@@ -71,7 +71,7 @@ const Client = {
     {
       name: "Amostra 2",
       email: "amostra2@amostra2.com",
-      cpforcnpj: "99999999999",
+      cpforcnpj: "11111111111",
       tel: 9999999999,
       address: "Amostra end 2",
       number: 574,
