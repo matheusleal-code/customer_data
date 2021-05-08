@@ -57,28 +57,28 @@ const List = {
 const Client = {
   all: [
     {
-      name: "Matheus",
-      email: "matheus@gmail.com",
-      cpforcnpj: "12345",
-      tel: 99999999,
-      address: "rua 01",
+      name: "Amostra 1",
+      email: "amostra1@amostra1.com",
+      cpforcnpj: "99999999999",
+      tel: 9999999999,
+      address: "Amostra end 1",
       number: 500,
-      cep: 1111111,
-      district: "Mendes",
-      city: "Guaruja",
+      cep: 11111111,
+      district: "Amostra bairro 1",
+      city: "Amostra cidade 1",
       uf: "SP"
     },
     {
-      name: "Julia",
-      email: "julia@gmail.com",
-      cpforcnpj: "123456",
-      tel: 99999999,
-      address: "rua 02",
-      number: 600,
-      cep: 12212,
-      district: "Caraca",
-      city: "SJC",
-      uf: "SP"
+      name: "Amostra 2",
+      email: "amostra2@amostra2.com",
+      cpforcnpj: "99999999999",
+      tel: 9999999999,
+      address: "Amostra end 2",
+      number: 574,
+      cep: 22222222,
+      district: "Amostra bairro 2",
+      city: "Amostra cidade 2",
+      uf: "MG"
     }
   ],
   add(client) {
