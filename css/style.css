@@ -59,6 +59,14 @@ input {
   width: 100%;
 }
 
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
 button {
   outline: none;
   width: 100%;
@@ -72,11 +80,6 @@ button {
 
 button:hover {
   background: var(--blue);
-}
-
-.button.new {
-  display: inline-block;
-  margin-bottom: 0.8rem;
 }
 
 .button.cancel {
@@ -127,6 +130,8 @@ header:hover {
   border-radius: 0.5rem 0 0 0.5rem;
 }
 
+/*==== Client ====*/
+
 #client-container {
   margin-top: 1rem;
   padding: 0.6rem;
@@ -134,6 +139,7 @@ header:hover {
 }
 
 #client-container .client-header {
+  border-radius: 0.5rem;
   background-color: #e9e6e6;
   display: flex;
   padding: 1rem;
@@ -163,28 +169,42 @@ header:hover {
   background-color: rgb(8, 172, 8);
 }
 
-/* ==== Table ====*/
+.actions-header #btn-list.open {
+  background-color: var(--red);
+}
 
-/*==== Table Client ====*/
+.actions-header #btn-list.open:hover {
+  background-color: rgb(211, 14, 14);
+}
+
+/* ==== Client List ====*/
 
 #clients {
   width: 100%;
   margin: 1rem auto auto auto;
 }
 
+#notification {
+  margin-top: 1rem;
+  color: var(--red);
+}
+
 .box {
   width: 100%;
 }
 
-.row {
-}
-
 .row-main {
+  opacity: 0.7;
   padding: 1rem;
   display: flex;
   justify-content: space-around;
   border: 1px solid #d2d2d2;
   border-radius: 0.2rem;
+  cursor: default;
+}
+
+.row-main:hover {
+  opacity: 1;
 }
 
 .row-main p {
@@ -202,7 +222,7 @@ header:hover {
 }
 
 #trash {
-  background-color: red;
+  background-color: var(--red);
   margin-right: 0.2rem;
 }
 
@@ -227,9 +247,14 @@ header:hover {
 }
 
 #row-second {
-  border-top: red 1px solid;
-  border-radius: 0;
-  display: none;
+  color: var(--blue);
+  margin: 0.2rem;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  transition: max-height 1s;
+  overflow: hidden;
+  max-height: 0;
 }
 
 input[type="checkbox"] {
@@ -237,12 +262,7 @@ input[type="checkbox"] {
 }
 
 input:checked ~ #row-second {
-  padding: 1rem;
-  display: flex;
-  justify-content: space-around;
-  border: 1px solid var(--blue);
-  border-radius: 0.2rem;
-  flex-direction: column;
+  max-height: 300px;
 }
 
 #row-second .row {
@@ -285,18 +305,22 @@ input:checked ~ #row-second {
   margin-top: 0.2rem;
 }
 
-.input-two {
+.input-three {
   display: flex;
   width: 100%;
   justify-content: space-between;
 }
 
-.input-two .input-group {
+.input-three .input-group {
   width: 100%;
 }
 
-.input-two .input-group:first-child {
+.input-three .input-group {
   margin-right: 0.2rem;
+}
+
+.input-three .input-group:last-child {
+  margin-right: 0;
 }
 
 .input-two .input-group #address {
@@ -305,6 +329,10 @@ input:checked ~ #row-second {
 
 .input-address {
   margin-top: 1rem;
+}
+
+#uf {
+  text-transform: uppercase;
 }
 
 .input-group.actions {
@@ -346,4 +374,14 @@ input:checked ~ #row-second {
 .modal-container .input-group input {
   cursor: not-allowed;
   background-color: #fff;
+}
+
+/* ==== Footer ==== */
+footer {
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 0;
+  padding: 4rem 0 2rem;
+  color: var(--dark-blue);
+  opacity: 0.6;
 }

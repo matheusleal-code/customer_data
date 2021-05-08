@@ -36,39 +36,83 @@ const List = {
 
   show() {
     List.isShow = !List.isShow
+    dom.clearNotification()
     if (List.isShow) {
       App.reload()
-      Client.all.forEach(dom.addNewClient)
+      if (Client.all.length == 0) {
+        dom.addStyleBtn(true)
+        dom.addNewNotification("Nenhum cliente cadastrado", "red")
+        setTimeout(function () { dom.clearNotification() }, 3000);
+      } else {
+        dom.addStyleBtn(true)
+        Client.all.forEach(dom.addNewClient)
+      }
     } else {
+      dom.addStyleBtn(false)
       App.reload()
     }
   }
 }
 
 const Client = {
-  all: [],
+  all: [
+    {
+      name: "Matheus",
+      email: "matheus@gmail.com",
+      cpforcnpj: "12345",
+      tel: 99999999,
+      address: "rua 01",
+      number: 500,
+      cep: 1111111,
+      district: "Mendes",
+      city: "Guaruja",
+      uf: "SP"
+    },
+    {
+      name: "Julia",
+      email: "julia@gmail.com",
+      cpforcnpj: "123456",
+      tel: 99999999,
+      address: "rua 02",
+      number: 600,
+      cep: 12212,
+      district: "Caraca",
+      city: "SJC",
+      uf: "SP"
+    }
+  ],
   add(client) {
     Client.all.push(client)
-    List.show()
-    alert("Cliente Adicionado com Sucesso!")
+    dom.addNewNotification("Cliente adicionado com sucesso!", "blue")
+    setTimeout(function () { dom.clearNotification() }, 3000);
   },
 
   remove(index) {
     Client.all.splice(index, 1)
+    dom.addStyleBtn()
     App.reload()
+    dom.addStyleBtn(false)
     List.isShow = false
-    alert("Cliente Excluido com Sucesso!")
+    dom.addNewNotification("Cliente excluído com sucesso!", "blue")
+    setTimeout(function () { dom.clearNotification() }, 3000);
   },
 
   search(cpforcnpj) {
+    let isSuccess = false;
+    dom.clearNotification()
     for (var i = 0; i < Client.all.length; i++) {
       if (Client.all[i].cpforcnpj == cpforcnpj) {
+        isSuccess = true
         if (List.isShow == true) {
           List.show()
         }
         dom.addNewClient(Client.all[i], i)
         break
       }
+    }
+    if (isSuccess == false) {
+      dom.addNewNotification("Cliente não encontrado", "red")
+      setTimeout(function () { dom.clearNotification() }, 3000);
     }
   }
 
@@ -91,6 +135,7 @@ const Search = {
     List.isShow = false;
     try {
       const cpforcnpj = Search.formatValue()
+      dom.addStyleBtn(false)
       Client.search(cpforcnpj)
     } catch (err) {
       alert(err.message)
@@ -101,11 +146,36 @@ const Search = {
 
 const dom = {
   clientNewContainer: document.querySelector('.box'),
+  notificationContainer: document.querySelector('.notification-container'),
+  btnList: document.querySelector('#btn-list'),
+
+  addStyleBtn(isOpen) {
+    if (isOpen) {
+      dom.btnList.classList.add('open')
+    } else {
+      dom.btnList.classList.remove('open')
+    }
+  },
+
+  addNewNotification(text, color) {
+    const div = document.createElement('div')
+    div.innerHTML = dom.innerHTMLNotification(text)
+    div.id = "notification"
+    div.style.color = color
+    dom.notificationContainer.appendChild(div)
+  },
 
   addNewClient(client, index) {
     const div = document.createElement('div')
     div.innerHTML = dom.innerHTMLNewClient(client, index)
     dom.clientNewContainer.appendChild(div)
+  },
+
+  innerHTMLNotification(text) {
+    const html = `
+      <span>${text}</span>
+    `
+    return html
   },
 
   innerHTMLNewClient(client, index) {
@@ -138,9 +208,13 @@ const dom = {
     return html
   },
 
-  clearTable() {
+  clearClients() {
     dom.clientNewContainer.innerHTML = ""
   },
+
+  clearNotification() {
+    dom.notificationContainer.innerHTML = ""
+  }
 }
 
 const Form = {
@@ -227,6 +301,6 @@ const Form = {
 
 const App = {
   reload() {
-    dom.clearTable()
+    dom.clearClients()
   }
 }
