@@ -185,8 +185,8 @@ const dom = {
           <p>Nome: ${client.name}</p>
           <p>Telefone: ${client.tel}</p>
           <p>CPF/CNPJ: ${client.cpforcnpj}</p>
-          <button id="trash" onClick="Client.remove(${index})"><i class="fa fa-trash"></i></button>
-          <label class="item" id="eye" for=${client.cpforcnpj}><i class="fa fa-eye"></i></label>
+          <button id="trash"  data-tooltip="Excluir" onClick="Client.remove(${index})"><i class="fa fa-trash"></i></button>
+          <label class="item" id="eye" for=${client.cpforcnpj}><i  data-tooltip="Mostrar Mais" class="fa fa-eye"></i></label>
         </div>
       </div>
       <input type="checkbox" id=${client.cpforcnpj}>

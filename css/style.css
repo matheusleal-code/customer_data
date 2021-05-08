@@ -100,11 +100,16 @@ button:hover {
 
 /* ==== Header ==== */
 header {
-  height: 20vh;
+  height: 30vh;
   display: flex;
   justify-content: center;
   align-items: center;
   background: linear-gradient(to top left, #5cff33 20%, #3d8746 110%);
+}
+
+header h1 {
+  color: white;
+  padding-bottom: 2rem;
 }
 
 header:hover {
@@ -116,13 +121,20 @@ header:hover {
   margin: auto;
 }
 
+.search-container {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
 #search-bar {
-  margin-top: -1.6rem;
+  height: 2rem;
+  margin: 0 2rem 0 2rem;
   display: flex;
 }
 
 #search-bar button {
-  width: 4rem;
+  width: 2rem;
+  height: 2rem;
   border-radius: 0 0.5rem 0.5rem 0;
 }
 
@@ -132,15 +144,18 @@ header:hover {
 
 /*==== Client ====*/
 
-#client-container {
-  margin-top: 1rem;
+.client {
+  background-color: #e9e6e6;
+  width: 100%;
   padding: 0.6rem;
-  border-radius: 0.5rem 0.5rem 0 0;
+  margin-top: -4rem;
+  margin-bottom: 2rem;
+  border-radius: 0.5rem;
 }
 
-#client-container .client-header {
+.client .client-header {
   border-radius: 0.5rem;
-  background-color: #e9e6e6;
+
   display: flex;
   padding: 1rem;
   justify-content: space-between;
@@ -179,6 +194,12 @@ header:hover {
 
 /* ==== Client List ====*/
 
+.new-client {
+}
+
+.new-client:hover {
+}
+
 #clients {
   width: 100%;
   margin: 1rem auto auto auto;
@@ -200,7 +221,6 @@ header:hover {
   justify-content: space-around;
   border: 1px solid #d2d2d2;
   border-radius: 0.2rem;
-  cursor: default;
 }
 
 .row-main:hover {
@@ -261,7 +281,7 @@ input[type="checkbox"] {
   display: none;
 }
 
-input:checked ~ #row-second {
+#clients .box input:checked ~ #row-second {
   max-height: 300px;
 }
 
@@ -384,4 +404,27 @@ footer {
   padding: 4rem 0 2rem;
   color: var(--dark-blue);
   opacity: 0.6;
+}
+
+[data-tooltip] {
+  position: relative;
+  font-weight: bold;
+}
+
+[data-tooltip]:after {
+  display: none;
+  position: absolute;
+  top: -20px;
+  z-index: 999;
+  padding: 5px;
+  border-radius: 3px;
+  left: calc(100% + 2px);
+  content: attr(data-tooltip);
+  white-space: nowrap;
+  background-color: #f2f4f2;
+  color: var(--blue);
+}
+
+[data-tooltip]:hover:after {
+  display: block;
 }

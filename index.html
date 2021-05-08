@@ -12,12 +12,13 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <script defer src="./js/script.js"></script>
-  <title>WelClient</title>
+
+  <title>Wel.Client</title>
 </head>
 
 <body>
   <header>
-    <h1>WelClient</h1>
+    <h1>Wel.Client</h1>
   </header>
   <main id="container">
     <div class="modal-overlay">
@@ -83,43 +84,51 @@
       </div>
     </div> <!-- modal end -->
 
-    <!-- search start -->
+    <!-- client header start -->
     <section>
-      <form action="" id="search-bar" onsubmit="Search.submit(event)">
-        <label for="search" class="sr-only">Pesquisar Cliente pelo CPF ou CNPJ</label>
-        <input type="text" id="search" name="search" placeholder="Pesquisar Cliente pelo CPF ou CNPJ">
-        <button type="submit"><i class="fa fa-search"></i></button>
-      </form>
-      <div class="notification-container">
-
+      <div class="client">
+        <div class="client-header">
+          <h2>Clientes</h2>
+          <div class="actions-header">
+            <button data-tooltip="Novo Cliente" onclick="Modal.open()"><i class="fa fa-plus"></i></button>
+            <button data-tooltip="Listar Clientes" id="btn-list" onclick="List.show()"><i
+                class="fa fa-list"></i></button>
+          </div>
+        </div>
+        <div class="search-container">
+          <form action="" id="search-bar" onsubmit="Search.submit(event)">
+            <label for="search" class="sr-only">Pesquisar Cliente pelo CPF ou CNPJ</label>
+            <input type="text" id="search" name="search" placeholder="Pesquisar Cliente pelo CPF ou CNPJ">
+            <button data-tooltip="Pesquisar" type="submit"><i class="fa fa-search"></i></button>
+          </form>
+        </div>
       </div>
-    </section><!-- search end -->
+
+      <div class="notification-container">
+      </div>
+
+    </section><!-- client header end -->
 
     <!-- main start -->
     <section>
       <div id="client-container">
-        <div class="client-header">
-          <h2>Clientes</h2>
-          <div class="actions-header">
-            <button onclick="Modal.open()"><i class="fa fa-plus"></i></button>
-            <button id="btn-list" onclick="List.show()"><i class="fa fa-list"></i></button>
-          </div>
-        </div>
         <div class="client-main">
           <section id="clients">
             <div class="box">
 
             </div>
-
           </section>
         </div>
       </div>
     </section><!-- Main end -->
+
   </main>
 
   <footer>
+    <!-- footer start -->
     <p>wel.client LTDA ©</p>
-  </footer>
+  </footer> <!-- footer end -->
+
 </body>
 
 </html>
